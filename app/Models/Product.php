@@ -21,6 +21,7 @@ class Product extends Model
     // ✅ Relation avec la catégorie (un produit appartient à une catégorie)
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(\App\Models\Category::class);
     }
+
 }

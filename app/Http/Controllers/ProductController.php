@@ -73,13 +73,19 @@ class ProductController extends Controller
     return redirect()->route('products.index')->with('success', 'Produit mis à jour.');
 }
 
-public function destroy(Product $product)
-{
-    $product->delete();
-    return redirect()->route('products.index')->with('success', 'Produit supprimé.');
-}
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Produit supprimé.');
+    }
 
+        public function showByCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $products = $category->products;
 
+        return view('products.by_category', compact('category', 'products'));
+    }
 
 }
 

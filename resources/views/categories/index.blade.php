@@ -1,40 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h1>Catégories</h1>
-    <a href="{{ route('categories.create') }}" class="btn btn-primary">Ajouter une catégorie</a>
-</div>
+    <div class="max-w-5xl mx-auto px-4 py-6">
+        <h1 class="text-2xl font-bold text-center mb-8">Toutes les Catégories</h1>
 
-@if(session('success'))
-<div class="alert alert-success">{{ session('success') }}</div>
-@endif
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            @foreach ($categories as $category)
+                <a href="{{ route('products.by.category', $category->id) }}">
+                    {{ $category->name }}
+                </a>
 
-@if($categories->count())
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($categories as $category)
-        <tr>
-            <td>{{ $category->name }}</td>
-            <td>
-                <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-warning">Modifier</a>
-                <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Supprimer cette catégorie ?')">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-sm btn-danger">Supprimer</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-@else
-<p>Aucune catégorie trouvée.</p>
-@endif
+            @endforeach
+        </div>
+    </div>
 @endsection

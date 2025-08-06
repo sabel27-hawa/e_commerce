@@ -10,10 +10,11 @@ class Category extends Model
 {
     use HasFactory;
 
-    // app/Models/Category.php
+    
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(\App\Models\Product::class);
     }
+
 
 }

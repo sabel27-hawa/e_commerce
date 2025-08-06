@@ -9,8 +9,10 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        Category::create(['name' => 'Téléphones']);
-        Category::create(['name' => 'Ordinateurs']);
-        Category::create(['name' => 'Accessoires']);
+        Category::insert([
+            ['name' => 'Téléphones'],
+            ['name' => 'Ordinateurs'],
+            ['name' => 'Accessoires'],
+        ]);
     }
 }

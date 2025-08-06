@@ -12,11 +12,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-        public function index()
-    {
-        $categories = Category::all();
-        return view('categories.index', compact('categories'));
-    }
+       public function index()
+{
+    $categories = Category::all();
+    return view('categories.index', compact('categories'));
+}
 
     /**
      * Show the form for creating a new resource.
